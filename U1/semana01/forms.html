@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+<body>
+    <h2>Formularios</h2>
+    <form>
+        <div>
+            <label for="txtnombre">Nombre</label><br>
+            <input type="text" id="txtnombre" required>
+        </div>
+
+        <div>
+            <label for="txtemail">Email</label><br>
+            <input type="email" id="txtemail" required>
+        </div>
+
+        <div>
+            <label for="txtedad">Edad</label><br>
+            <input type="number" id="txtedad" min="0" max="100">
+        </div>
+
+        <div>
+            <label for="txtfechanacimiento">Fecha de Nacimiento</label><br>
+            <input type="date" id="txtfechanacimiento">
+        </div>
+
+        <div>
+            <label for="cmbcarrera">Carrera</label><br>
+            <select id="cmbcarrera">
+                <option>Seleccione</option>
+                <option value="1">T.U. en Informática</option>
+                <option value="2">T.U. en Electrónica</option>
+                <option value="3">T.U. en Electricidad</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="">Lugar de origen:</label><br>
+            <input type="radio" name="origen" id="radiovalpo" checked>
+            <label for="radiovalpo">Región de Valparaíso</label>
+            <br>
+            <input type="radio" name="origen" id="radionotvalpo">
+            <label for="radionotvalpo">Otra región</label>
+        </div>
+
+        <div>
+            <input type="checkbox" id="checkgratuidad">
+            <label for="checkgratuidad">Tiene gratuidad</label>
+        </div>
+
+        <div>
+            <label for="txtcomentarios">Comentarios</label><br>
+            <textarea id="txtcomentarios"></textarea>
+        </div>
+
+        <div>
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+</body>
+</html>
