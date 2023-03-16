@@ -13,15 +13,18 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    /* height: 500px; */
-    /* align-items: stretch; */
     flex-wrap: nowrap;
+    margin-bottom: 10px;
 }
 
 #div-b {
-    order: -1;
+    flex-grow: 2;
 }
 
 #div-c {
-    order: 1;
+    flex-grow: 1;
+}
+
+#div-c2 {
+    flex-shrink: 2;
 }
