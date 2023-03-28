@@ -1,0 +1,27 @@
+//colores personalizados
+$primary: #1334b6;
+$secondary: #f9061b;
+$success: #03a35f;
+$info: #fb551d;
+$warning: #e1cb03;
+$danger: #f01c01;
+$light: #cfd7db;
+$dark: #1c131d;
+
+//agregar otro nivel de color
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+$custom-colors: (
+    "attention":#9900FF,
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+//cambiar font
+// $font-family-base: "Trebuchet MS, sans-serif";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+$font-family-base: 'Montserrat', sans-serif;
+
+//importar bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
