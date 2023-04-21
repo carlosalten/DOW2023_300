@@ -24,54 +24,25 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($equipos as $num=>$equipo)
                 <tr>
-                    <td>1</td>
-                    <td>Lorem Ipsums</td>
-                    <td>Jewell Sein</td>
+                    <td>{{ $num+1 }}</td>
+                    <td>{{ $equipo->nombre }}</td>
+                    <td>{{ $equipo->entrenador }}</td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip" data-bs-title="Borrar Equipo">
+                        <a href="#" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip" data-bs-title="Borrar {{ $equipo->nombre }}">
                             <span class="material-icons">delete</span>
                         </a>
-                        <a href="#" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Editar Equipo">
+                        <a href="#" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Editar {{ $equipo->nombre }}">
                             <span class="material-icons">edit</span>
                         </a>
-                        <a href="#" class="btn btn-sm btn-info pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Ver Equipo">
+                        <a href="#" class="btn btn-sm btn-info pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Ver {{ $equipo->nombre }}">
                             <span class="material-icons">group</span>
                         </a>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Lorem Ipsums</td>
-                    <td>Jewell Sein</td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip" data-bs-title="Borrar Equipo">
-                            <span class="material-icons">delete</span>
-                        </a>
-                        <a href="#" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Editar Equipo">
-                            <span class="material-icons">edit</span>
-                        </a>
-                        <a href="#" class="btn btn-sm btn-info pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Ver Equipo">
-                            <span class="material-icons">group</span>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Lorem Ipsums</td>
-                    <td>Jewell Sein</td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-danger pb-0" data-bs-toggle="tooltip" data-bs-title="Borrar Equipo">
-                            <span class="material-icons">delete</span>
-                        </a>
-                        <a href="#" class="btn btn-sm btn-warning pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Editar Equipo">
-                            <span class="material-icons">edit</span>
-                        </a>
-                        <a href="#" class="btn btn-sm btn-info pb-0 text-white" data-bs-toggle="tooltip" data-bs-title="Ver Equipo">
-                            <span class="material-icons">group</span>
-                        </a>
-                    </td>
-                </tr>
+                @endforeach
+
             </tbody>
         </table>
     </div>
