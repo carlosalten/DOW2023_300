@@ -8,7 +8,7 @@
         <p>Lista de todos los jugadores ingresados</p>
     </div>
     <div class="col-4 d-flex align-items-center justify-content-end">
-        <a href="#" class="btn btn-success">Agregar Jugador</a>
+        <a href="{{route('jugadores.create')}}" class="btn btn-success">Agregar Jugador</a>
     </div>
 </div>
 
@@ -28,15 +28,17 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($jugadores as $num=>$jugador)
                 <tr>
-                    <td class="align-middle">num</td>
-                    <td class="align-middle">rut</td>
-                    <td class="align-middle">apellido</td>
-                    <td class="align-middle">nombre</td>
-                    <td class="align-middle">numero camiseta</td>
-                    <td class="align-middle">posicion</td>
-                    <td class="align-middle">equipo</td>
+                    <td class="align-middle">{{$num+1}}</td>
+                    <td class="align-middle">{{$jugador->rut}}</td>
+                    <td class="align-middle">{{$jugador->apellido}}</td>
+                    <td class="align-middle">{{$jugador->nombre}}</td>
+                    <td class="align-middle">{{$jugador->numero_camiseta}}</td>
+                    <td class="align-middle">{{$jugador->posicion}}</td>
+                    <td class="align-middle">{{$jugador->equipo->nombre}}</td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

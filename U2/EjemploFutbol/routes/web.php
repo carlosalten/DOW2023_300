@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EquiposController;
+use App\Http\Controllers\JugadoresController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,9 @@ Route::get('/',[HomeController::class,'index'])->name('home.index');
 Route::get('/login',[HomeController::class,'login'])->name('home.login');
 
 Route::get('/equipos',[EquiposController::class,'index'])->name('equipos.index');
+Route::get('/equipos/{equipo}',[EquiposController::class,'listarJugadores'])->name('equipos.jugadores');
+
+Route::get('/jugadores',[JugadoresController::class,'index'])->name('jugadores.index');
+Route::get('/jugadores/create',[JugadoresController::class,'create'])->name('jugadores.create');
+Route::post('/jugadores',[JugadoresController::class,'store'])->name('jugadores.store');
+// Route::resource('/jugadores',JugadoresController::class);

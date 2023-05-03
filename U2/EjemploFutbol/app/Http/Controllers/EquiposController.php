@@ -12,4 +12,8 @@ class EquiposController extends Controller
         // return view('equipos.index',['equipos'=>$equipos]);
         return view('equipos.index',compact('equipos'));
     }
+
+    public function listarJugadores(Equipo $equipo){
+        return view('equipos.jugadores',compact('equipo'));
+    }
 }
