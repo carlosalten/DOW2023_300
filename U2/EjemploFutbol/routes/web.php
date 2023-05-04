@@ -25,6 +25,8 @@ Route::get('/login',[HomeController::class,'login'])->name('home.login');
 
 Route::get('/equipos',[EquiposController::class,'index'])->name('equipos.index');
 Route::get('/equipos/{equipo}',[EquiposController::class,'listarJugadores'])->name('equipos.jugadores');
+Route::get('/equipos/{equipo}/edit',[EquiposController::class,'edit'])->name('equipos.edit');
+Route::put('/equipos/{equipo}',[EquiposController::class,'update'])->name('equipos.update');
 
 Route::get('/jugadores',[JugadoresController::class,'index'])->name('jugadores.index');
 Route::get('/jugadores/create',[JugadoresController::class,'create'])->name('jugadores.create');
