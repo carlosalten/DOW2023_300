@@ -31,4 +31,7 @@ Route::put('/equipos/{equipo}',[EquiposController::class,'update'])->name('equip
 Route::get('/jugadores',[JugadoresController::class,'index'])->name('jugadores.index');
 Route::get('/jugadores/create',[JugadoresController::class,'create'])->name('jugadores.create');
 Route::post('/jugadores',[JugadoresController::class,'store'])->name('jugadores.store');
+Route::get('/jugadores/{jugador}/edit',[JugadoresController::class,'edit'])->name('jugadores.edit');
+Route::put('/jugadores/{jugador}',[JugadoresController::class,'update'])->name('jugadores.update');
+Route::delete('/jugadores/{jugador}',[JugadoresController::class,'destroy'])->name('jugadores.destroy');
 // Route::resource('/jugadores',JugadoresController::class);

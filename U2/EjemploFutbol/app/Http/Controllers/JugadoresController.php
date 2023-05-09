@@ -55,7 +55,10 @@ class JugadoresController extends Controller
      */
     public function edit(Jugador $jugador)
     {
-        //
+        //obtener listado de equipos para colocarlos en el <select>
+        $equipos = Equipo::orderBy('nombre')->get();
+        //enviar al formulario los datos del jugador que se está editando y la lista de equipos para el <select>
+        return view('jugadores.edit',compact(['jugador','equipos']));
     }
 
     /**
@@ -63,7 +66,14 @@ class JugadoresController extends Controller
      */
     public function update(Request $request, Jugador $jugador)
     {
-        //
+        $jugador->rut = $request->rut;
+        $jugador->nombre = $request->nombre;
+        $jugador->apellido = $request->apellido;
+        $jugador->numero_camiseta = $request->numero_camiseta;
+        $jugador->posicion = $request->posicion;
+        $jugador->equipo_id = $request->equipo;
+        $jugador->save();
+        return redirect()->route('jugadores.index');
     }
 
     /**
@@ -71,6 +81,7 @@ class JugadoresController extends Controller
      */
     public function destroy(Jugador $jugador)
     {
-        //
+        $jugador->delete();
+        return redirect()->route('jugadores.index');
     }
 }
