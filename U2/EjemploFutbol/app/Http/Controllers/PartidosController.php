@@ -59,7 +59,10 @@ class PartidosController extends Controller
      */
     public function edit(Partido $partido)
     {
-
+        $equipos = Equipo::orderBy('nombre')->get();
+        $equipoLocal = $partido->equiposConPivot->where('pivot.es_local',true)->first();
+        $equipoVisita = $partido->equiposConPivot->where('pivot.es_local',false)->first();
+        return view('partidos.edit',compact(['partido','equipos','equipoLocal','equipoVisita']));
     }
 
     /**
@@ -67,7 +70,28 @@ class PartidosController extends Controller
      */
     public function update(Request $request, Partido $partido)
     {
+        //datos de la tabla partido
+        $partido->fecha = $request->fecha;
+        $partido->estado = $request->estado;
+        $partido->save();
 
+        //datos de la tabla de interseccion
+        $equipoLocal = $partido->equiposConPivot->where('pivot.es_local',true)->first();
+        $equipoVisita = $partido->equiposConPivot->where('pivot.es_local',false)->first();
+        //modificar goles
+        $partido->equiposConPivot()->updateExistingPivot($equipoLocal->id,['goles'=>$request->goles_local]);
+        $partido->equiposConPivot()->updateExistingPivot($equipoVisita->id,['goles'=>$request->goles_visita]);
+
+        //modificar equipos
+        if($equipoLocal->id != $request->equipo_local){
+            $partido->equiposConPivot()->updateExistingPivot($equipoLocal->id,['equipo_id'=>$request->equipo_local]);
+        }
+        if($equipoVisita->id != $request->equipo_visita){
+            $partido->equiposConPivot()->updateExistingPivot($equipoVisita->id,['equipo_id'=>$request->equipo_visita]);
+        }
+
+        //redireccionar a listado de equipos
+        return redirect()->route('partidos.index');
     }
 
     /**
@@ -75,6 +99,8 @@ class PartidosController extends Controller
      */
     public function destroy(Partido $partido)
     {
- 
+        $partido->equiposConPivot()->detach();
+        $partido->delete();
+        return redirect()->route('partidos.index');
     }
 }
