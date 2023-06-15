@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -21,6 +21,14 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::define('usuarios-listar',function($usuario){
+            return $usuario->rol->nombre == 'Administrador';
+        });
+        Gate::define('usuarios-modificar',function($usuario){
+            return $usuario->rol->nombre == 'Administrador';
+        });
+        Gate::define('roles-listar',function($usuario){
+            return $usuario->rol->nombre == 'Administrador';
+        });
     }
 }

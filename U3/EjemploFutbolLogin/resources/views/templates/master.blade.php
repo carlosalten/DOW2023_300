@@ -62,8 +62,12 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark bg-primary">
                                 <li><a class="dropdown-item" href="{{route('usuarios.cambiarcontrasena')}}">Cambiar Contraseña</a></li>
+                                @if(Gate::allows('roles-listar'))
                                 <li><a class="dropdown-item" href="{{route('roles.index')}}">Roles</a></li>
+                                @endif
+                                @if(Gate::allows('usuarios-listar'))
                                 <li><a class="dropdown-item" href="{{route('usuarios.index')}}">Usuarios</a></li>
+                                @endif
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

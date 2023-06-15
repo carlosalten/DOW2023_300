@@ -14,7 +14,7 @@
 
 <div class="row">
     <!-- tabla -->
-    <div class="col-12 col-lg-8 order-last order-lg-first">
+    <div class="col-12 @if(Gate::allows('usuarios-listar')) col-lg-8 @endif order-last order-lg-first">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
@@ -34,6 +34,7 @@
                     <td>{{ count($equipo->jugadores) }}</td>
                     <td>
                         <div class="row">
+                            @if(Gate::allows('usuarios-modificar'))
                             {{-- Borrar --}}
                             <div class="col text-end">
                                 <form method="POST" action="{{route('equipos.destroy',$equipo->id)}}">
@@ -59,6 +60,7 @@
                                     </span>
                                 </a>
                             </div>
+                            @endif
                         </div>
                     </td>
                 </tr>
@@ -69,6 +71,7 @@
 
     <!-- form agregar equipo -->
     <div class="col-12 col-lg-4 order-first order-lg-last">
+        @if(Gate::allows('usuarios-listar'))
         <div class="card">
             <div class="card-header bg-dark text-white">Agregar Equipo</div>
             <div class="card-body">
@@ -102,6 +105,7 @@
                 </form>
             </div>
         </div>
+        @endif
     </div>
 </div>
 @endsection
